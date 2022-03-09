@@ -1,9 +1,6 @@
 package com.simbirsoft.taskboard.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ProjectUsersRoles {
@@ -11,4 +8,42 @@ public class ProjectUsersRoles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "project_id_user_id")
+    private Project projectIdUser;
+
+
+    @ManyToOne
+    @JoinColumn(name = "roleUser")
+    private Roles roles;
+
+
+    @ManyToOne
+    @JoinColumn(name = "Users")
+    private Users users;
+
+
+
+    public Project getProjectIdUser() {
+        return projectIdUser;
+    }
+
+    public void setProjectIdUser(Project projectIdUser) {
+        this.projectIdUser = projectIdUser;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
 }

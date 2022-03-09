@@ -1,43 +1,29 @@
-package com.simbirsoft.taskboard.entity;
+package com.simbirsoft.taskboard.dto;
 
-import javax.persistence.*;
+import com.simbirsoft.taskboard.entity.Boards;
+import com.simbirsoft.taskboard.entity.HistoryStatusTasks;
+import com.simbirsoft.taskboard.entity.Releases;
+import com.simbirsoft.taskboard.entity.Users;
+
+
 import java.util.List;
 
-@Entity
-public class Tasks {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class TasksDto {
 
-    @Column(name = "name", columnDefinition = "varchar(500)", nullable = false)
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "boardsId")
     private Boards boardsId;
-
-
-    @OneToMany(mappedBy = "users")
     private List<Users> authorId;
-
-    @OneToMany(mappedBy = "users")
     private List<Users> executorId;
-
-    @OneToMany(mappedBy = "releasesId")
     private List<Releases> releases;
-
-    @OneToMany(mappedBy = "historyStatusTasksId")
     private List<HistoryStatusTasks> historyStatusTasks;
 
-    public Long getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
-
-
 
     public Boards getBoardsId() {
         return boardsId;
@@ -77,13 +63,5 @@ public class Tasks {
 
     public void setHistoryStatusTasks(List<HistoryStatusTasks> historyStatusTasks) {
         this.historyStatusTasks = historyStatusTasks;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

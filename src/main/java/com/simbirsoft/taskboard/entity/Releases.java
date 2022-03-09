@@ -18,6 +18,18 @@ public class Releases {
     @Column(name = "time_final")
     private LocalDate timeFinal;
 
+    @ManyToOne
+    @JoinColumn(name = "releases_id_id")
+    private Tasks releasesId;
+
+    public Tasks getReleasesId() {
+        return releasesId;
+    }
+
+    public void setReleasesId(Tasks releasesId) {
+        this.releasesId = releasesId;
+    }
+
     public Long getId() {
         return id;
     }

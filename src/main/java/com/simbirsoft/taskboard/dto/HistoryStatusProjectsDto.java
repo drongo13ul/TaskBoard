@@ -1,38 +1,16 @@
-package com.simbirsoft.taskboard.entity;
+package com.simbirsoft.taskboard.dto;
 
-import javax.persistence.*;
+import com.simbirsoft.taskboard.entity.Project;
+import com.simbirsoft.taskboard.entity.Statuses;
+
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-public class HistoryStatusProjects {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column
+public class HistoryStatusProjectsDto {
     private LocalDate localDate;
-
-    @ManyToOne
-    @JoinColumn(name = "statusProjects")
     private Statuses statusProjectsId;
-
-
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
     private Project owner;
-
-    @OneToMany(mappedBy = "historyId")
     private List<Project> projects;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public LocalDate getLocalDate() {
         return localDate;
@@ -42,20 +20,20 @@ public class HistoryStatusProjects {
         this.localDate = localDate;
     }
 
-    public Project getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Project owner) {
-        this.owner = owner;
-    }
-
     public Statuses getStatusProjectsId() {
         return statusProjectsId;
     }
 
     public void setStatusProjectsId(Statuses statusProjectsId) {
         this.statusProjectsId = statusProjectsId;
+    }
+
+    public Project getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Project owner) {
+        this.owner = owner;
     }
 
     public List<Project> getProjects() {

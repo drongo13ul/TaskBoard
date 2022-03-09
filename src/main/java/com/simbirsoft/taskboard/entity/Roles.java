@@ -1,6 +1,7 @@
 package com.simbirsoft.taskboard.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Roles {
@@ -10,6 +11,11 @@ public class Roles {
 
     @Column(name = "name", columnDefinition = "varchar(500)", nullable = false)
     private String name;
+
+
+    @OneToMany(mappedBy = "roles")
+    private List<ProjectUsersRoles> projectUsersRolesList;
+
 
     public Long getId() {
         return id;
@@ -25,5 +31,13 @@ public class Roles {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<ProjectUsersRoles> getProjectUsersRolesList() {
+        return projectUsersRolesList;
+    }
+
+    public void setProjectUsersRolesList(List<ProjectUsersRoles> projectUsersRolesList) {
+        this.projectUsersRolesList = projectUsersRolesList;
     }
 }

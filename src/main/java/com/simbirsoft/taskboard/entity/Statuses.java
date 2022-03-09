@@ -16,6 +16,18 @@ public class Statuses {
     @OneToMany(mappedBy = "statusProjectsId")
     private List<HistoryStatusProjects> statusProjects;
 
+    @ManyToOne
+    @JoinColumn(name = "statuses_id_id")
+    private HistoryStatusTasks statusesId;
+
+    public HistoryStatusTasks getStatusesId() {
+        return statusesId;
+    }
+
+    public void setStatusesId(HistoryStatusTasks statusesId) {
+        this.statusesId = statusesId;
+    }
+
 
     public Long getId() {
         return id;

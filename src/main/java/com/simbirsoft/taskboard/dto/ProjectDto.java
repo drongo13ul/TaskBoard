@@ -1,52 +1,18 @@
-package com.simbirsoft.taskboard.entity;
+package com.simbirsoft.taskboard.dto;
 
-import javax.persistence.*;
+import com.simbirsoft.taskboard.entity.Boards;
+import com.simbirsoft.taskboard.entity.HistoryStatusProjects;
+import com.simbirsoft.taskboard.entity.ProjectUsersRoles;
+
 import java.util.List;
 
-@Entity
-public class Project {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
-    @Column(name = "name", columnDefinition = "varchar(500)", nullable = false)
+public class ProjectDto {
     private String name;
-
-    @Column(name = "description", columnDefinition = "varchar(500)", nullable = false)
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "HistoryStatusProjects_id")
     private HistoryStatusProjects historyId;
-
-
-    @OneToMany(mappedBy = "owner")
     private List<HistoryStatusProjects> historyStatusProjects;
-
-    @OneToMany(mappedBy = "projectId")
     private List<Boards> boards;
-
-    @OneToMany(mappedBy = "projectIdUser")
     private List<ProjectUsersRoles> projectUserRoleList;
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -56,18 +22,21 @@ public class Project {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public HistoryStatusProjects getHistoryId() {
         return historyId;
     }
 
-    public void setHistoryId (HistoryStatusProjects historyStatusProjects){
-        this.historyStatusProjects = (List<HistoryStatusProjects>) historyStatusProjects;
-    }
-
-    public void setHistoryStatusProjectsId(Long historyStatusProjectsId) {
+    public void setHistoryId(HistoryStatusProjects historyId) {
         this.historyId = historyId;
     }
-
 
     public List<HistoryStatusProjects> getHistoryStatusProjects() {
         return historyStatusProjects;
