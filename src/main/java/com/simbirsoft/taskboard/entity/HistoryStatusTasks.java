@@ -17,6 +17,8 @@ public class HistoryStatusTasks {
     @JoinColumn(name = "history_status_tasks_id_id")
     private Tasks historyStatusTasksId;
 
+
+
     @OneToMany(mappedBy = "statusesId")
     private List<Statuses> statuses;
 
@@ -28,9 +30,15 @@ public class HistoryStatusTasks {
         this.historyStatusTasksId = historyStatusTasksId;
     }
 
+
     public List<Statuses> getStatuses() {
         return statuses;
     }
+
+    public void setStatuses(List<Statuses> statuses) {
+        this.statuses = statuses;
+    }
+
 
     public Long getId() {
         return id;

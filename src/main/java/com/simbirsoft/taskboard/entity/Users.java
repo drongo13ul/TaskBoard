@@ -40,7 +40,7 @@ public class Users {
         return name;
     }
 
-    public void setName(Long id) {
+    public void setName(String id) {
         this.name = name;
     }
 

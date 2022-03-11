@@ -22,12 +22,16 @@ public class ProjectUsersRoles {
     @JoinColumn(name = "Users")
     private Users users;
 
-
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+    public Users getUsers() {
+        return users;
+    }
 
     public Project getProjectIdUser() {
         return projectIdUser;
     }
-
     public void setProjectIdUser(Project projectIdUser) {
         this.projectIdUser = projectIdUser;
     }
@@ -42,7 +46,6 @@ public class ProjectUsersRoles {
     public Roles getRoles() {
         return roles;
     }
-
     public void setRoles(Roles roles) {
         this.roles = roles;
     }

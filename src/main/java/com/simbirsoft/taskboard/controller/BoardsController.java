@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @Tag(name = "Boards controller", description = "Boards controller / Управление доской задач")
 @RestController
 @RequestMapping("/boards")

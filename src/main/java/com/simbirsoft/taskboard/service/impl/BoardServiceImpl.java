@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class BoardService implements com.simbirsoft.taskboard.service.BoardService {
+public class BoardServiceImpl implements com.simbirsoft.taskboard.service.BoardService {
 
     private final BoardRepository boardRepository;
     private final BoardMapper boardMapper;
 
     @Autowired
-    public BoardService(BoardRepository boardRepository, BoardMapper boardMapper) {
+    public BoardServiceImpl(BoardRepository boardRepository, BoardMapper boardMapper) {
         this.boardRepository = boardRepository;
         this.boardMapper = boardMapper;
     }

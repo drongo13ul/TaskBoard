@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ProjectService implements com.simbirsoft.taskboard.service.ProjectService {
+public class ProjectServiceImpl implements com.simbirsoft.taskboard.service.ProjectService {
 
     private final ProjectRepository projectRepository;
     private final ProjectMapper projectMapper;
 
     @Autowired
-    public ProjectService(ProjectRepository projectRepository, ProjectMapper projectMapper) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, ProjectMapper projectMapper) {
         this.projectRepository = projectRepository;
         this.projectMapper = projectMapper;
     }
@@ -43,5 +43,22 @@ public class ProjectService implements com.simbirsoft.taskboard.service.ProjectS
                 .orElseThrow(() -> new ProjectIdNotFoundException(id));
         projectRepository.delete(project);
 
+    }
+
+    @Override
+    public Project update(Long id, ProjectDto projectDto) {
+        Project projectTemp = projectRepository.findById(id)
+                .orElseThrow(()->new ProjectIdNotFoundException(id));
+
+//        Project projectTemp = projectRepository.getById(projectId);
+        projectTemp.setName(projectDto.getName());
+        projectTemp.setBoards(projectDto.getBoards());
+        projectTemp.setDescription(projectDto.getDescription());
+        projectTemp.setProjectUserRoleList(projectDto.getProjectUserRoleList());
+        projectTemp.setHistoryId(projectDto.getHistoryId());
+        projectTemp.setHistoryStatusProjects(projectDto.getHistoryStatusProjects());
+        projectTemp.setProjectUserRoleList(projectDto.getProjectUserRoleList());
+        projectRepository.save(projectTemp);
+        return projectTemp;
     }
 }
